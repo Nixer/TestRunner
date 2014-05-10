@@ -2,9 +2,9 @@
 ::========================================
 SET GITHUB_ACCOUNT=Nixer
 SET WS_DIR=Nixer_Workspace
-SET REPO_NAME=Title_Validation_CSV
+SET REPO_NAME=Title_Validation_E2E
 SET APP_VERSION=1.1
-SET MAIN_CLASS=core.Title_Validation_CSV.HtmlUnit_CSV_throws
+SET MAIN_CLASS=core.Title_Validation_E2E.Selenium
 SET ARGS_01=
 ::========================================
 
@@ -34,10 +34,11 @@ CD C:\%WS_DIR%
 git clone https://github.com/%GITHUB_ACCOUNT%/%REPO_NAME%.git
 CD %REPO_NAME%
 SLEEP 2
-CALL mvn package
+CALL mvn clean site test -Dtest=AllTests -D bversion="1.1"
 ECHO.
-ECHO Executing Java programm ...
-java -cp C:\%WS_DIR%\%REPO_NAME%\target\%REPO_NAME%-%APP_VERSION%-jar-with-dependencies.jar %MAIN_CLASS% %ARG_01%
+::ECHO Executing Java programm ...
+::CD C:\%WS_DIR%\%REPO_NAME%\target
+::java -cp %REPO_NAME%-%APP_VERSION%-jar-with-dependencies.jar %MAIN_CLASS% %ARG_01% >d:\test_results.txt
 GOTO END
 
 :EXIT_JAVA
@@ -53,4 +54,4 @@ GOTO END
 ECHO %WS_DIR% is not exists
 GOTO END
 :END
-CD\
+::CD\

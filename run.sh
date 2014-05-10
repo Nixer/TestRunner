@@ -2,9 +2,9 @@
 # ========================================
 GITHUB_ACCOUNT=Nixer
 WS_DIR=Nixer_Workspace
-REPO_NAME=Title_Validation_CSV
+REPO_NAME=Title_Validation_E2E
 APP_VERSION=1.1
-MAIN_CLASS=core.Title_Validation_CSV.HtmlUnit_CSV_throws
+MAIN_CLASS=core.Title_Validation_E2E.Selenium
 ARGS_01=
 # ========================================
 # ========================================
@@ -32,6 +32,6 @@ git clone https://github.com/$GITHUB_ACCOUNT/$REPO_NAME.git
 
 cd ./$REPO_NAME
 
-mvn package
-echo "Executing Java programm ..."
-java -cp $HOME/$WS_DIR/$REPO_NAME/target/$REPO_NAME-$APP_VERSION.jar $MAIN_CLASS $ARGS_01
+mvn clean site test -Dtest=AllTests -D bversion="1.1"
+#echo "Executing Java programm ..."
+#java -cp $HOME/$WS_DIR/$REPO_NAME/target/$REPO_NAME-$APP_VERSION.jar $MAIN_CLASS $ARGS_01
